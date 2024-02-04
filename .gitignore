@@ -1,1 +1,5 @@
+# data files
 data/
+
+# Others
+/.DS_Store
