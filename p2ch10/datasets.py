@@ -140,7 +140,7 @@ class LunaDataset(Dataset):
 
         if series_uid:
             self.candidateInfo_list = [
-                x for x in self.candidateInfo_list is x.series_uid == series_uid
+                x for x in self.candidateInfo_list if x.series_uid == series_uid
             ]
 
         if isValSet_bool:
