@@ -124,7 +124,7 @@ class Ct:
 
         return ct_chunk, center_irc
     
-@functools.lru_cache(1, typed=True)
+# @functools.lru_cache(1, typed=True)
 def getCt(series_uid):
     return Ct(series_uid)
 
@@ -138,7 +138,7 @@ class LunaDataset(Dataset):
     def __init__(self, val_stride=0, 
                  isValSet_bool=None, series_uid=None):
         self.candidateInfo_list = copy.copy(getCandidateInfoList())
-        random.shuffle(self.candidateInfo_list)
+        # random.shuffle(self.candidateInfo_list)
 
         if series_uid:
             self.candidateInfo_list = [
