@@ -3,6 +3,7 @@ import csv
 import functools
 import glob
 import os
+import random
 
 from collections import namedtuple
 
@@ -137,6 +138,7 @@ class LunaDataset(Dataset):
     def __init__(self, val_stride=0, 
                  isValSet_bool=None, series_uid=None):
         self.candidateInfo_list = copy.copy(getCandidateInfoList())
+        random.shuffle(self.candidateInfo_list)
 
         if series_uid:
             self.candidateInfo_list = [
