@@ -37,7 +37,7 @@ class LunaModel(nn.Module):
                     nn.init._calculate_fan_in_and_fan_out(m.weight.data)
                     bound = 1 / math.sqrt(fan_out)
                     nn.init.normal_(m.bias, -bound, bound)
-                    
+
 
     def forward(self, input_batch):
         bn_output = self.tail_batchnorm(input_batch)
@@ -46,7 +46,7 @@ class LunaModel(nn.Module):
         block_out = self.block3(block_out)
         block_out = self.block4(block_out)
         
-        conv_flat = bn_output.view(block_out.size(0), -1)
+        conv_flat = block_out.view(block_out.size(0), -1)
         linear_output = self.head_linear(conv_flat)
         return linear_output, self.head_softmax(linear_output)
 
@@ -64,6 +64,7 @@ class LunaBlock(nn.Module):
         block_out = self.relu1(block_out)
         block_out = self.conv2(block_out)
         block_out = self.relu2(block_out)
+        block_out = self.maxpool(block_out)
 
-        return self.maxpool(block_out)
+        return block_out
 
