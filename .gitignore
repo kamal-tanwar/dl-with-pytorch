@@ -4,3 +4,6 @@ data-unversioned
 
 # Others
 /.DS_Store
+
+# Cache Files
+p2ch11/__pycache__/
