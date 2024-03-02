@@ -5,7 +5,7 @@ import sys
 
 import numpy as np
 
-# from torch.utils.tensorboard import SummaryWriter
+from torch.utils.tensorboard import SummaryWriter
 
 import torch
 import torch.nn as nn
@@ -123,6 +123,15 @@ class LunaTrainingApp:
         )
 
         return val_dl
+    
+    def initTensorboardWriters(self):
+        if self.trn_writer is None:
+            log_dir = os.path.join('runs', self.cli_args.tb_prefix, self.time_str)
+
+            self.trn_writer = SummaryWriter(
+                log_dir=log_dir + '-trn_cls-' + self.cli_args.comment)
+            self.val_writer = SummaryWriter(
+                log_dir=log_dir + '-val_cls-' + self.cli_args.comment)
     
     def main(self):
         log.info('Starting {}, {}'.format(type(self).__name__, self.cli_args))
