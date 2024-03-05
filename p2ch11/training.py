@@ -54,7 +54,7 @@ class LunaTrainingApp:
                             help='Data prefix to use for Tensorboard run. Defaults to chapter.'
                             )
         parser.add_argument('comment',
-                            help='omment suffix for Tensorboard run.',
+                            help='comment suffix for Tensorboard run.',
                             nargs='?',
                             default='dlwpt'
                             )
